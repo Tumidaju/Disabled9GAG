@@ -5,10 +5,27 @@ namespace MoreDisabled.ViewModels
 {
     public class MainViewModel : MvxViewModel
     {
+        public MvxObservableCollection<Photo> Photos { get; }
+
         public MainViewModel()
         {
+            Photos = new MvxObservableCollection<Photo>
+            {
+                new Photo
+                {
+                    Url = "http://www.efantastyka.pl/files/filmy/shrek.jpg",
+                    Likes = 10,
+                    Dislikes = 10000
+                },
+                 new Photo
+                {
+                    Url = "http://www.efantastyka.pl/files/filmy/shrek.jpg",
+                    Likes = 10,
+                    Dislikes = 10000
+                }
+            };
         }
-        
+
         public override Task Initialize()
         {
             //TODO: Add starting logic here
