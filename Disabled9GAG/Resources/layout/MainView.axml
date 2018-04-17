@@ -4,4 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:MvxItemTemplate="@layout/item_photo"
-    app:MvxBind="ItemsSource Photos;" />
+    app:MvxBind="ItemsSource Photos; ItemClick PhotoSelectedCommand" />

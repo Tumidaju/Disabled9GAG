@@ -3,7 +3,11 @@ using MvvmCross.Core.ViewModels;
 
 namespace MoreDisabled.ViewModels
 {
-    public class MainViewModel : MvxViewModel
+    public abstract class BaseViewModel<TParamatr> : MvxViewModel<TParamatr>
+    {
+
+    }
+    public class MainViewModel : BaseViewModel<string>
     {
         public MvxObservableCollection<Photo> Photos { get; }
 
@@ -25,6 +29,35 @@ namespace MoreDisabled.ViewModels
                 }
             };
         }
+        public ICommand PhotoSelectedCommand => new PhotoSelectedCommand(this);
+    }
+    }
+    public class PhotoSelectedCommand : MvxCommand
+    {
+        private readonly INavigatingObject _navigatingObject;
+        public PhotoSelectedCommand(INavigatingObject navigatingObject) 
+        {
+            navigatingObject = navigatingObject;
+        }
+    private void Execute(Photo photo)
+    {
+        _navigatingObject.Navigate<PhotoDetailsViewModel,PhotoId>(new PhotoId { Id = photo.Id})
+    }
+
+    }
+public class PhotoId
+{
+    public int Id { get; set; }
+}
+    internal class PhotoDetailsViewModel : BaseViewModel<int>
+    {
+        public override void Prepare(int parametr)
+        {
+            base.Prepare();
+        }
+    }
+public class PhotoDetailsActivity : MvxViewModelAc
+       
 
         public override Task Initialize()
         {

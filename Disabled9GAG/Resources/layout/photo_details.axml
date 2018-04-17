@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_patrent"
+
+  <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:MvxItemTemplate="@layout/item_comment"
+    app:MvxBind="ItemsSource Comments" />
+    <EditText
+      android:id="@+id/edittext_comment"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_AlignParentBottom="true"
+      android:layoutToLeftOf="@+id/button_send"
+      android:hint="Wpisz komentarz"
+      app:MvxBind="Text NewComment">
+    </EditText>
+    <button
+      android:id="@+id/button_send"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      
+    </button>
+  </mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView>
+</RelativeLayout>
